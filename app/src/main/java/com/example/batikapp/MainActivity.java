@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         rvnya=(RecyclerView)findViewById(R.id.rv_Batik);
         layoutManager=new LinearLayoutManager(this);
         rvnya.setLayoutManager(layoutManager);

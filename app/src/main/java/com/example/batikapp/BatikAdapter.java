@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -24,6 +26,7 @@ public class BatikAdapter extends RecyclerView.Adapter<BatikAdapter.BatikHolder>
         this.activity = activity;
     }
 
+
     @NonNull
     @Override
     public BatikHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,8 +38,22 @@ public class BatikAdapter extends RecyclerView.Adapter<BatikAdapter.BatikHolder>
     public void onBindViewHolder(@NonNull BatikHolder holder, final int position) {
             holder.txtDaerah.setText(daftarBatik.get(position).getDaerah_batik());
             holder.txtNama.setText(daftarBatik.get(position).getNama_batik());
-
             Picasso.with(activity).load(daftarBatik.get(position).getLink_batik()).into(holder.imgBatik);
+            if(position%7==0){
+                holder.crd.setCardBackgroundColor(ContextCompat.getColor(activity,R.color.colorkuningtua));
+            }else if(position%7==1){
+                holder.crd.setCardBackgroundColor(ContextCompat.getColor(activity,R.color.colorijau) );
+            }else if(position%7==2){
+                holder.crd.setCardBackgroundColor(ContextCompat.getColor(activity,R.color.colormerahungu));
+            }else if (position%7==3){
+                holder.crd.setCardBackgroundColor(ContextCompat.getColor(activity,R.color.colorhitam));
+            }else if (position%7==4){
+                holder.crd.setCardBackgroundColor(ContextCompat.getColor(activity,R.color.colorhijau2));
+            }else if (position%7==5){
+                holder.crd.setCardBackgroundColor(ContextCompat.getColor(activity,R.color.colorkuningmuda));
+            }else if (position%7==6){
+                holder.crd.setCardBackgroundColor(ContextCompat.getColor(activity,R.color.colorpinksalem));
+            }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -56,6 +73,7 @@ public class BatikAdapter extends RecyclerView.Adapter<BatikAdapter.BatikHolder>
     static class BatikHolder extends RecyclerView.ViewHolder{
         ImageView imgBatik,imgback;
         TextView txtDaerah,txtNama;
+        CardView crd;
 
         public BatikHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +81,7 @@ public class BatikAdapter extends RecyclerView.Adapter<BatikAdapter.BatikHolder>
 
             txtDaerah=(TextView)itemView.findViewById(R.id.txt_daerah);
             txtNama=(TextView)itemView.findViewById(R.id.txt_nama);
+            crd=(CardView)itemView.findViewById(R.id.card_id);
 
         }
     }
